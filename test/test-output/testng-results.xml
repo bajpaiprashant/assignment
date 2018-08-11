@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="35530" started-at="2018-08-08T16:39:21Z" finished-at="2018-08-08T16:39:57Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="35530" started-at="2018-08-08T16:39:21Z" finished-at="2018-08-08T16:39:57Z">
+      <class name="businessComponents.SearchBooks">
+        <test-method status="PASS" signature="tc1()[pri:0, instance:businessComponents.SearchBooks@7f63425a]" name="tc1" duration-ms="24856" started-at="2018-08-08T22:09:21Z" finished-at="2018-08-08T22:09:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc1 -->
+        <test-method status="PASS" signature="tc2()[pri:0, instance:businessComponents.SearchBooks@7f63425a]" name="tc2" duration-ms="7275" started-at="2018-08-08T22:09:46Z" finished-at="2018-08-08T22:09:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc2 -->
+        <test-method status="PASS" signature="tc3()[pri:0, instance:businessComponents.SearchBooks@7f63425a]" name="tc3" duration-ms="3371" started-at="2018-08-08T22:09:53Z" finished-at="2018-08-08T22:09:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc3 -->
+      </class> <!-- businessComponents.SearchBooks -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
