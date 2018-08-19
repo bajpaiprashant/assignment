@@ -1,24 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="3" passed="3">
+<testng-results skipped="0" failed="0" total="4" passed="4">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="35530" started-at="2018-08-08T16:39:21Z" finished-at="2018-08-08T16:39:57Z">
+  <suite name="Default suite" duration-ms="38107" started-at="2018-08-19T14:13:35Z" finished-at="2018-08-19T14:14:13Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="35530" started-at="2018-08-08T16:39:21Z" finished-at="2018-08-08T16:39:57Z">
+    <test name="Default test" duration-ms="38107" started-at="2018-08-19T14:13:35Z" finished-at="2018-08-19T14:14:13Z">
       <class name="businessComponents.SearchBooks">
-        <test-method status="PASS" signature="tc1()[pri:0, instance:businessComponents.SearchBooks@7f63425a]" name="tc1" duration-ms="24856" started-at="2018-08-08T22:09:21Z" finished-at="2018-08-08T22:09:46Z">
+        <test-method status="PASS" signature="startReport()[pri:0, instance:businessComponents.SearchBooks@35f983a6]" name="startReport" is-config="true" duration-ms="978" started-at="2018-08-19T19:43:35Z" finished-at="2018-08-19T19:43:36Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- tc1 -->
-        <test-method status="PASS" signature="tc2()[pri:0, instance:businessComponents.SearchBooks@7f63425a]" name="tc2" duration-ms="7275" started-at="2018-08-08T22:09:46Z" finished-at="2018-08-08T22:09:53Z">
+        </test-method> <!-- startReport -->
+        <test-method status="PASS" signature="testCase1()[pri:0, instance:businessComponents.SearchBooks@35f983a6]" name="testCase1" duration-ms="23072" started-at="2018-08-19T19:43:36Z" finished-at="2018-08-19T19:43:59Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- tc2 -->
-        <test-method status="PASS" signature="tc3()[pri:0, instance:businessComponents.SearchBooks@7f63425a]" name="tc3" duration-ms="3371" started-at="2018-08-08T22:09:53Z" finished-at="2018-08-08T22:09:57Z">
+        </test-method> <!-- testCase1 -->
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:businessComponents.SearchBooks@35f983a6]" name="getResult" is-config="true" duration-ms="5" started-at="2018-08-19T19:43:59Z" finished-at="2018-08-19T19:43:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testCase1 status=SUCCESS method=SearchBooks.testCase1()[pri:0, instance:businessComponents.SearchBooks@35f983a6] output={null}]]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- tc3 -->
+        </test-method> <!-- getResult -->
+        <test-method status="PASS" signature="testCase2()[pri:0, instance:businessComponents.SearchBooks@35f983a6]" name="testCase2" duration-ms="4740" started-at="2018-08-19T19:43:59Z" finished-at="2018-08-19T19:44:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCase2 -->
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:businessComponents.SearchBooks@35f983a6]" name="getResult" is-config="true" duration-ms="0" started-at="2018-08-19T19:44:04Z" finished-at="2018-08-19T19:44:04Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testCase2 status=SUCCESS method=SearchBooks.testCase2()[pri:0, instance:businessComponents.SearchBooks@35f983a6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method status="PASS" signature="testCase3()[pri:0, instance:businessComponents.SearchBooks@35f983a6]" name="testCase3" duration-ms="2995" started-at="2018-08-19T19:44:04Z" finished-at="2018-08-19T19:44:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCase3 -->
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:businessComponents.SearchBooks@35f983a6]" name="getResult" is-config="true" duration-ms="0" started-at="2018-08-19T19:44:07Z" finished-at="2018-08-19T19:44:07Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testCase3 status=SUCCESS method=SearchBooks.testCase3()[pri:0, instance:businessComponents.SearchBooks@35f983a6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method status="PASS" signature="testCase4()[pri:0, instance:businessComponents.SearchBooks@35f983a6]" name="testCase4" duration-ms="4242" started-at="2018-08-19T19:44:07Z" finished-at="2018-08-19T19:44:11Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCase4 -->
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:businessComponents.SearchBooks@35f983a6]" name="getResult" is-config="true" duration-ms="1" started-at="2018-08-19T19:44:11Z" finished-at="2018-08-19T19:44:11Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testCase4 status=SUCCESS method=SearchBooks.testCase4()[pri:0, instance:businessComponents.SearchBooks@35f983a6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method status="PASS" signature="endReport()[pri:0, instance:businessComponents.SearchBooks@35f983a6]" name="endReport" is-config="true" duration-ms="2054" started-at="2018-08-19T19:44:11Z" finished-at="2018-08-19T19:44:13Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endReport -->
       </class> <!-- businessComponents.SearchBooks -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

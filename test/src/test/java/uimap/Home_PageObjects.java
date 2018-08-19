@@ -17,6 +17,11 @@ public class Home_PageObjects {
 	public static final String TXT_TITLE="//*[@id='isbn_feature_div']//div[2]/span[2]";
 	public static final String TXT_PUBLISHER="//*[@id='isbn_feature_div']//div[2]/span[2]";
 	public static final String TXT_STARS="//*[@id='acrPopover']/span[1]//i[1]/span";
+	public static final String NUM_SEARCH_RESULTS="//a[contains(@class,'twister-title')]";
+
+	
+	
+	//*[contains(@id,'result')]/div/div/div/div[1]/div/div/a
 
 
 	

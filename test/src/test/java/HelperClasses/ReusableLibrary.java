@@ -29,12 +29,30 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogLevel;
+import com.relevantcodes.extentreports.LogStatus;
+
+import reporting.ExtentReport;
+
+
 public class ReusableLibrary{
 	
 
 	public WebDriver driver;
+	ExtentReports extent;
+	ExtentTest logger;
 	int i=0;
 
+	
+	
+	/**
+	 * @author prashantbajpai
+	 * @param browserName
+	 * @param url
+	 * @description This method is to launch the app in the given browser
+	 */
 	public void launchApp(String browserName, String url) {
 		try {
 			if(browserName.equalsIgnoreCase("chrome")){
@@ -62,7 +80,12 @@ public class ReusableLibrary{
 		}
 
 	}
-
+	
+	/**
+	 * @author prashantbajpai
+	 * @param url
+	 * @description This method is to launch the given app
+	 */
 	public void launchApp(String url) {
 		try {
 			driver.get(url);
@@ -75,22 +98,36 @@ public class ReusableLibrary{
 
 	}
 
+	/**
+	 * @author prashantbajpai
+	 * @param id
+	 * @param dataToEnter
+	 * @description This method is to enter data into a text box
+	 */
 	public void enterById(String id, String dataToEnter) {
 		try {
 			driver.findElement(By.id(id)).clear();
 			driver.findElement(By.id(id)).sendKeys(dataToEnter);
 		} catch (NoSuchElementException e) {
 			System.out.println("Element Not found");
+
 		}
 		catch(WebDriverException e){
 			System.out.println("Browser Not found");
+
 		}
 		finally{
+			//take screenshot
 			takeSnap();
 		}
 
 	}
 
+	/**
+	 * @author prashantbajpai
+	 * @param classname
+	 * @description This method is to click an element using class name
+	 */
 	public void clickByClassName(String className) {
 		try {
 			driver.findElement(By.className(className)).click();
@@ -108,25 +145,47 @@ public class ReusableLibrary{
 
 	}
 
-	public void verifyTitle(String expectedTitle) {
+	
+	/**
+	 * @author prashantbajpai
+	 * @description This method verifies the title of the web page
+	 * @param expectedTitle
+	 * @return true or false based on the title verification
+	 */
+	public boolean verifyTitle(String expectedTitle) {
 		try {
 			if(driver.getTitle().equals(expectedTitle)){
-				System.out.println("Login successfull");
-
+				System.out.println("Title of the page is as expected");
+				return true;
+			}
+			else{
+				System.out.println("Title of the page is not as expected");
+				return false;
 			}
 		} 
 		catch(WebDriverException e){
+			
 			System.out.println("Browser Not found");
+			return false;
 		}
 		
 
 	}
 
+	/**
+	 * 
+	 * @author prashantbajpai
+	 * This method closes all the open browsers
+	 */
 	public void closeAllBrowsers() {
 		driver.quit();
 
 	}
 
+	/**
+	 * @author prashantbajpai
+	 * This methid is used to take a screen shot in the given page
+	 */
 	public void takeSnap() {
 		
 		File src=((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -139,6 +198,10 @@ public class ReusableLibrary{
 
 	}
 
+	/**
+	 * @author prashantbajpai
+	 * This method is used to switch to a browser window
+	 */
 	public void switchToPrimaryWindow()
 	{
 	try {
@@ -150,11 +213,14 @@ public class ReusableLibrary{
 	break;
 	}
 	} catch (WebDriverException e) {
-	// TODO Auto-generated catch block
 	System.out.println("Main Window not found");
 	}
 	}
 
+	/**
+	 * @author prashantbajpai
+	 * This method is used to switch to last browser window
+	 */
 	public void switchToLastWindow()
 	{
 	try {
@@ -171,6 +237,11 @@ public class ReusableLibrary{
 
 	}
 
+	/**
+	 * @param frameelement
+	 * @author prashantbajpai
+	 * This method is used to switch to frame window
+	 */
 	public void switchToFrameByElement(WebElement frameelement ) {
 		try {
 			driver.switchTo().frame(frameelement);
@@ -186,6 +257,12 @@ public class ReusableLibrary{
 		
 	}
 
+	/**
+	 * @author prashantbajpai
+	 * @param frame
+	 * This method is used to switch to first frame window
+	 * 
+	 */
 	public void switchToFirstFrame(List<WebElement> frame ) {
 		try {
 			driver.switchTo().frame(0);
@@ -200,6 +277,12 @@ public class ReusableLibrary{
 		}
 	}
 
+	/**
+	 * @author prashantbajpai
+	 * @param frame
+	 * This method is used to switch to last frame window
+	 * 
+	 */
 	public void switchToLastFrame(List<WebElement> frame ) {
 		try {
 			int n=frame.size();
@@ -217,6 +300,10 @@ public class ReusableLibrary{
 
 	}
 
+	/**
+	 * @author prashantbajpai
+	 * This methiod is used to accept a alert message
+	 */
 	public void acceptAlert() {
 		try {
 			Alert al=driver.switchTo().alert();
@@ -229,6 +316,13 @@ public class ReusableLibrary{
 		}
 
 	}
+	
+	
+	/**
+	 * @author prashantbajpai
+	 * @param linktext
+	 * This method is used to click an element using link text
+	 */
 	public void clickByLinkText(String linktext) {
 		try {
 			driver.findElement(By.linkText(linktext)).click();
@@ -244,6 +338,11 @@ public class ReusableLibrary{
 
 
 
+	/**
+	 * @author prashantbajpai
+	 * @param url
+	 * This method is used to verify the page URL
+	 */
 	public void verifyCurrentUrl(String url) {
 		try {
 			if (url.equalsIgnoreCase(driver.getCurrentUrl())){
@@ -262,6 +361,11 @@ public class ReusableLibrary{
 
 	}
 
+	/**
+	 * @param text
+	 * @param id
+	 * This method is used to verify a given text in the UI by using ID as locator
+	 */
 	public void verifyTextById(String text,String id) {
 		try {
 			if (text.equalsIgnoreCase(driver.findElement(By.id(id)).getText())){
@@ -285,6 +389,11 @@ public class ReusableLibrary{
 
 	}
 
+	/**
+	 * @param text
+	 * @param id
+	 * This method is used to verify a given text in the UI by using xpath as locator
+	 */
 	public void verifyTextByXpath(String text , String xpath) {
 		try {
 			if (text.equalsIgnoreCase(driver.findElement(By.xpath(xpath)).getText())){
@@ -307,6 +416,13 @@ public class ReusableLibrary{
 
 
 	}
+	
+	
+	/**
+	 * @author prashantbajpai
+	 * @param name
+	 * This method is used to click a name using its name as locator
+	 */
 	public void clickByName(String name) {
 		try {
 			driver.findElement(By.name(name)).click();
@@ -322,6 +438,11 @@ public class ReusableLibrary{
 
 	}
 
+	/**
+	 * @author prashantbajpai
+	 * @param xpath
+	 * This method is used to click a name using its xpath as locator
+	 */
 	public void clickByXpath(String xpath) {
 		try {
 			driver.findElement(By.xpath(xpath)).click();
@@ -334,6 +455,11 @@ public class ReusableLibrary{
 	
 	}
 	
+	/**
+	 * @author prashantbajpai
+	 * @param id
+	 * This method is used to click a name using its ID as locator
+	 */
 	public void clickByID(String id) {
 		try {
 			driver.findElement(By.id(id)).click();
@@ -347,6 +473,11 @@ public class ReusableLibrary{
 	}
 
 
+	/**
+	 * @author prashantbajpai
+	 * @param name,text
+	 * This method is used to enter text value into textbox
+	 */
 	public void enterByName(String name, String text) {
 		try {
 			driver.findElement(By.name(name)).sendKeys(text);
@@ -362,6 +493,11 @@ public class ReusableLibrary{
 */
 	}
 
+	/**
+	 * @author prashantbajpai
+	 * @param id
+	 * This method is used to click a element by xpath
+	 */
 	public void enterByXpath(String xpath, String text) {
 		try {
 			driver.findElement(By.xpath(xpath)).sendKeys(text);
@@ -375,6 +511,10 @@ public class ReusableLibrary{
 			takeSnap();
 		}
 	}
+	/**
+	 * @author prashantbajpai
+	 * This method is used to dismiss a alert
+	 */
 	public void dismissAlert(){
 		try {
 			Alert al=driver.switchTo().alert();
@@ -389,6 +529,23 @@ public class ReusableLibrary{
 
 	}
 
+	/**
+	 * @author prashantbajpai
+	 * This method is to verify if a given element is present
+	 * 
+	 */
+	public boolean isElementPresent(By ele){
+		try{
+		if(driver.findElement(ele).isDisplayed()||driver.findElement(ele).isSelected()||driver.findElement(ele).isEnabled()){
+			return true;
+		}
+		}
+		catch(Exception ex){
+			return false;
+		}
+		return true;
+		
+	}
 	public void selectByValue(String ele, String text) {
 		try {
 			if(driver.findElements(By.id(ele)).size() != 0){
