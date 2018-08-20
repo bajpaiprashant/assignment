@@ -40,6 +40,13 @@ public class SearchBooks extends ReusableLibrary{
 	//BookDeatils bookDeatils=null;
 	
 	
+	/**
+	 * @param browser
+	 * @param URL
+	 * @return
+	 * @throws InterruptedException
+	 * @description This method launch the browser and load the URL
+	 */
 	public boolean launchBrowserAndUrl(String browser, String URL) throws InterruptedException{	
 		try{
 		launchApp(browser, URL);
@@ -50,12 +57,16 @@ public class SearchBooks extends ReusableLibrary{
 		}
 	}
 		
-		@Test
-		public void testCase1() throws InterruptedException{
+		/**
+		 * @throws InterruptedException
+		 * This test case verify the UI Elements in the Home page
+		 */
+		@Test(priority=1)
+		public void verifyUIElements() throws InterruptedException{
 			//start the logger to log into report
-			logger = extent.startTest("testCase1");
+			logger = extent.startTest("verifyUIElements");
 			//verify if the browser is launched
-			if(launchBrowserAndUrl("chrome", "https://www.amazon.com/")){
+			if(launchBrowserAndUrl("firefox", "https://www.amazon.com/")){
 				logger.log(LogStatus.PASS, "verify browser is launched", "Browser launched successfully");				
 			}
 			else{
@@ -101,9 +112,12 @@ public class SearchBooks extends ReusableLibrary{
 			}
 		}
 	
-	@Test
-	public void testCase2(){
-		logger = extent.startTest("testCase2");
+	/**
+	 * This test cases to select the desired value  in the drop down and verify the search result
+	 */
+	@Test(priority=2)
+	public void verifySearchResult(){
+		logger = extent.startTest("verifySearchResult");
 		
 		selectByVisisbleText(Home_PageObjects.SELECT_CAT, "Books");
 		logger.log(LogStatus.PASS, "Drowpdown value was selected");				
@@ -130,9 +144,12 @@ public class SearchBooks extends ReusableLibrary{
 	}
 	
 	
-	@Test
-	public void testCase3(){	
-		logger = extent.startTest("testCase3");
+	/**
+	 * This test case is to check if search has rendered some value and click the first search result
+	 */
+	@Test(priority=3)
+	public void VeirfyNumberOfSearchResult(){	
+		logger = extent.startTest("VeirfyNumberOfSearchResult");
 
 		if(driver.findElements(By.xpath(Home_PageObjects.NUM_SEARCH_RESULTS)).size()>0){
 		logger.log(LogStatus.PASS, "verify the search results","Search has rendered some results");				
@@ -144,13 +161,18 @@ public class SearchBooks extends ReusableLibrary{
 	logger.log(LogStatus.FAIL, "verify the search results","Search didn't rendered any results");				
 	}
 	}
-	@Test
-	public void testCase4(){
-		logger = extent.startTest("testCase4");
+	
+	
+	/**
+	 * This test case is to get all the book details from the page and print the same in the report
+	 */
+	@Test(priority=4)
+	public void printBookDetailsInReport(){
+		logger = extent.startTest("printBookDetailsInReport");
 
 
 		getBookDetails();
-		printBookDetails();
+		printBookDetails(isbn_num);
 		bd.getAuthor_Name();
 		if(bd.getAuthor_Name().equalsIgnoreCase(this.author_Name)){
 			logger.log(LogStatus.PASS, "Author Name of the book is "+bd.getAuthor_Name());				
@@ -176,6 +198,10 @@ public class SearchBooks extends ReusableLibrary{
 	
 	
 	
+	/**
+	 * @author prashantbajpai
+	 * This method is to get the book details from the UI and store it in the map
+	 */
 	public void getBookDetails(){
 		this.isbn_num=getvalue(Home_PageObjects.TXT_ISBNNO);
 		this.title=getvalue(Home_PageObjects.TXT_TITLE);
@@ -186,7 +212,12 @@ public class SearchBooks extends ReusableLibrary{
 		bookDet.put(isbn_num,new BookDeatils(isbn_num, title, author_Name, price_Kindle_Edition, price_paperback_Edition, publisher));	
 	}
 	
-	public BookDeatils printBookDetails(){
+	/**
+	 * @return
+	 * @author prashantbajpai
+	 * This metod is to print the book details based on the key value ISBN
+	 */
+	public BookDeatils printBookDetails(String isbn_num){
 		System.out.println(bookDet.get(isbn_num));
 		bd=bookDet.get(isbn_num);
 		return bd;
@@ -194,6 +225,8 @@ public class SearchBooks extends ReusableLibrary{
 		//SearchBooks.myBookDet.iterator();
 		
 	}
+	
+	
 	@BeforeTest
 	public void startReport(){
 		//ExtentReports(String filePath,Boolean replaceExisting) 
@@ -212,6 +245,7 @@ public class SearchBooks extends ReusableLibrary{
                 extent.loadConfig(new File("extent_report-config.xml"));
 	}
 		
+	
 	@AfterMethod
 	public void getResult(ITestResult result){
 		if(result.getStatus()==ITestResult.SUCCESS){
@@ -229,6 +263,8 @@ public class SearchBooks extends ReusableLibrary{
 		//endTest(logger) : It ends the current test and prepares to create HTML report
 		extent.endTest(logger);
 	}
+	
+	
 	@AfterTest
 	public void endReport(){
 		// writing everything to document

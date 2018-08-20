@@ -6,4 +6,17 @@
       <class name="businessComponents.SearchBooks"/>
     </classes>
   </test> <!-- Default test -->
+  <test name="Default test(failed)">
+    <classes>
+      <class name="businessComponents.SearchBooks">
+        <methods>
+          <include name="printBookDetailsInReport"/>
+          <include name="getResult"/>
+          <include name="startReport"/>
+          <include name="verifySearchResult"/>
+          <include name="endReport"/>
+        </methods>
+      </class> <!-- businessComponents.SearchBooks -->
+    </classes>
+  </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
